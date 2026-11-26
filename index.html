@@ -5,46 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- =========================================
-         SEO & Meta Tags
+         SEO & Meta Tags (احترافية)
          ========================================= -->
-    <title>Twoline Building Materials Trading LLC | Opening Soon</title>
-    <meta name="description" content="Twoline Building Materials Trading LLC - Your trusted partner for Steel, Rebar, Woods, Plywood, Hardware, and Heavy Equipment in UAE. Delivery everywhere inside UAE. Opening Soon!">
-    <meta name="keywords" content="Building Materials, UAE, Dubai, Sharjah, Ajman, Umm Al Quwain, Steel, Rebar, Plywood, Hardware, Construction, Twoline">
+    <title>Twoline Building Materials | Premium Construction Supplies UAE</title>
+    <meta name="description" content="Twoline Building Materials Trading LLC - Premium supplier for Steel, Rebar, Woods, Plywood, Hardware, and Heavy Equipment in UAE. Delivery everywhere inside UAE. Opening Soon.">
+    <meta name="keywords" content="Building Materials, UAE, Dubai, Sharjah, Steel, Rebar, Plywood, Hardware, Twoline, Construction UAE">
     <meta name="author" content="Twoline Building Materials Trading LLC">
     <meta name="robots" content="index, follow">
-
-    <!-- Open Graph (For WhatsApp, Facebook, LinkedIn sharing) -->
-    <meta property="og:title" content="Twoline Building Materials Trading LLC | Opening Soon">
-    <meta property="og:description" content="Your trusted partner for Steel, Woods, Plywood, and Hardware in UAE. Delivery everywhere inside UAE.">
-    <meta property="og:image" content="https://twoline.shop/Images/logo-01.jpg"> <!-- يفضل تغيير هذا الرابط لرابط صورة حقيقية للمتجر أو اللوجو -->
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Twoline Building Materials | Opening Soon">
+    <meta property="og:description" content="Premium supplier for Steel, Woods, and Hardware in UAE. Opening Soon.">
+    <meta property="og:image" content="https://twoline.shop/Images/logo-01.jpg"> 
     <meta property="og:url" content="https://twoline.shop">
     <meta property="og:type" content="website">
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Twoline Building Materials Trading LLC">
-    <meta name="twitter:description" content="Your trusted partner for Building Materials in UAE.">
-
-    <!-- Favicon (أيقونة الموقع في المتصفح) -->
+    <!-- Favicon -->
     <link rel="icon" href="Images/logo-01.jpg" type="image/jpeg">
 
-    <!-- Fonts -->
+    <!-- Preconnect for Fonts (لتسريع التحميل) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Outfit:wght@300;500;700;900&display=swap" rel="stylesheet">
     
     <style>
         /* =========================================
-           1. الإعدادات العامة والمتغيرات (Variables)
+           1. المتغيرات والإعدادات الأساسية
            ========================================= */
         :root {
-            --primary-dark: #050d1a;      /* كحلي أغمق وأفخم */
-            --secondary-dark: #0a192f;    
-            --gold: #D4AF37;              /* ذهبي معدني فخم */
-            --gold-hover: #F3E5AB;        /* ذهبي فاتح */
-            --text-light: #f0f6fc;        
-            --text-muted: #8b98b3;        
-            --whatsapp: #25D366;          
+            --bg-dark: #030712;         /* أسود مزرق فخم */
+            --gold-primary: #D4AF37;    /* ذهبي */
+            --gold-light: #FDE08B;      /* ذهبي فاتح */
+            --gold-dark: #997A00;       /* ذهبي غامق */
+            --text-main: #F3F4F6;
+            --text-muted: #9CA3AF;
+            --glass-bg: rgba(17, 24, 39, 0.6);
+            --glass-border: rgba(212, 175, 55, 0.2);
         }
 
         * {
@@ -54,363 +50,365 @@
         }
 
         body {
-            font-family: 'Montserrat', 'Cairo', sans-serif;
-            background-color: var(--primary-dark);
-            color: var(--text-light);
+            font-family: 'Outfit', 'Cairo', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            overflow-x: hidden;
+            overflow: hidden; /* لمنع السكرول بسبب الأنيميشن */
             position: relative;
-            padding: 20px;
-            /* إضافة صورة خلفية للمعدات أو مواد البناء */
-            background-image: linear-gradient(rgba(5, 13, 26, 0.85), rgba(5, 13, 26, 0.95)), url('https://images.unsplash.com/photo-1541888086925-ebd3c1d60d4c?q=80&w=2070&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
         }
 
         /* =========================================
-           2. تأثيرات الخلفية المتحركة
+           2. الخلفية الفخمة المتحركة (CSS Only - Light)
            ========================================= */
-        .bg-glow {
-            position: fixed;
-            top: 0;
-            left: 0;
+        /* إضاءة خلفية ثابتة */
+        .ambient-light {
+            position: absolute;
             width: 100vw;
             height: 100vh;
+            z-index: -2;
+            background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 60%);
+        }
+
+        /* جزيئات ذهبية متحركة */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
             z-index: -1;
             overflow: hidden;
-            pointer-events: none;
         }
 
-        .bg-glow::before,
-        .bg-glow::after {
-            content: '';
+        .particle {
             position: absolute;
-            width: 400px;
-            height: 400px;
+            background: var(--gold-primary);
             border-radius: 50%;
-            background: var(--gold);
-            filter: blur(180px);
-            opacity: 0.1;
-            animation: floatGlow 12s infinite alternate ease-in-out;
+            box-shadow: 0 0 10px var(--gold-primary);
+            opacity: 0.4;
+            animation: floatParticle linear infinite;
         }
 
-        .bg-glow::before { top: -10%; left: -10%; }
-        .bg-glow::after { bottom: -10%; right: -10%; animation-delay: -6s; }
-
-        @keyframes floatGlow {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(100px, 100px) scale(1.3); }
+        @keyframes floatParticle {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            20% { opacity: 0.6; }
+            80% { opacity: 0.6; }
+            100% { transform: translateY(-100px) scale(1.5); opacity: 0; }
         }
 
         /* =========================================
-           3. الحاوية الرئيسية (Main Container)
+           3. الحاوية الزجاجية الرئيسية
            ========================================= */
-        .container {
-            max-width: 900px;
+        .main-card {
             width: 100%;
-            background: rgba(10, 25, 47, 0.65); /* زجاجية شفافة */
-            border: 1px solid rgba(212, 175, 55, 0.3); /* حدود ذهبية */
+            max-width: 850px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
             border-radius: 24px;
-            padding: 60px 40px;
+            padding: 50px 40px;
             text-align: center;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7), inset 0 0 20px rgba(212, 175, 55, 0.05);
-            backdrop-filter: blur(16px); 
-            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.1);
+            position: relative;
+            z-index: 1;
+            margin: 20px;
             
+            /* أنيميشن دخول الكارت */
             opacity: 0;
-            transform: translateY(40px);
-            animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            transform: translateY(30px) scale(0.98);
+            animation: cardEntrance 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        @keyframes fadeInUp {
+        /* خط ذهبي متوهج أعلى الكارت */
+        .main-card::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 10%;
+            width: 80%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+            box-shadow: 0 0 20px var(--gold-primary);
+        }
+
+        @keyframes cardEntrance {
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* تأخير ظهور العناصر الداخلية */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUpAnim 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+
+        @keyframes fadeUpAnim {
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .content > * {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        /* =========================================
+           4. اللوجو (تأثير توهج فخم)
+           ========================================= */
+        .logo-wrapper {
+            position: relative;
+            width: 130px;
+            height: 130px;
+            margin: 0 auto 25px auto;
         }
 
-        .content > *:nth-child(1) { animation-delay: 0.2s; }
-        .content > *:nth-child(2) { animation-delay: 0.3s; }
-        .content > *:nth-child(3) { animation-delay: 0.4s; }
-        .content > *:nth-child(4) { animation-delay: 0.5s; }
-        .content > *:nth-child(5) { animation-delay: 0.6s; }
-        .content > *:nth-child(6) { animation-delay: 0.7s; }
-
-        /* =========================================
-           4. اللوجو والعناوين (Logo & Titles)
-           ========================================= */
-        .logo-box {
-            margin-bottom: 25px;
-            position: relative;
-            display: inline-block;
+        .logo-wrapper::after {
+            content: '';
+            position: absolute;
+            inset: -5px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
+            z-index: -1;
+            animation: rotateGlow 4s linear infinite;
+            filter: blur(8px);
+            opacity: 0.6;
         }
 
         .logo {
-            width: 140px;
-            height: 140px;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
             border-radius: 50%;
+            border: 3px solid var(--gold-primary);
             background: #fff;
             padding: 5px;
-            border: 4px solid var(--gold);
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
-            transition: transform 0.5s ease, box-shadow 0.5s ease;
-            animation: pulseLogo 4s infinite alternate;
+            transition: transform 0.5s ease;
         }
 
-        .logo:hover {
-            transform: scale(1.08) rotate(5deg);
-            box-shadow: 0 0 50px rgba(212, 175, 55, 0.8);
+        .logo-wrapper:hover .logo {
+            transform: scale(1.05);
         }
 
-        @keyframes pulseLogo {
-            0% { box-shadow: 0 0 15px rgba(212, 175, 55, 0.2); }
-            100% { box-shadow: 0 0 40px rgba(212, 175, 55, 0.6); }
+        @keyframes rotateGlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
-        .main-title {
-            font-size: 4rem;
+        /* =========================================
+           5. العناوين (تأثير الذهب المعدني)
+           ========================================= */
+        .brand-name {
+            font-size: 3.5rem;
             font-weight: 900;
-            background: linear-gradient(to right, #D4AF37, #FFF8DC, #D4AF37);
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #FFF 0%, var(--gold-primary) 50%, var(--gold-dark) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-size: 200% auto;
-            letter-spacing: 4px;
-            line-height: 1.1;
             margin-bottom: 10px;
-            animation: shineText 3s linear infinite;
+            line-height: 1.2;
         }
 
-        @keyframes shineText {
-            to { background-position: 200% center; }
-        }
-
-        .sub-title {
+        .brand-subtitle {
             font-family: 'Cairo', sans-serif;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: var(--text-muted);
-            margin-bottom: 40px;
             letter-spacing: 2px;
+            margin-bottom: 35px;
             text-transform: uppercase;
         }
 
         /* =========================================
-           5. قسم "قريباً" (Coming Soon Section)
+           6. قسم "قريباً" (تأثير الكتابة)
            ========================================= */
-        .coming-soon-box {
+        .coming-soon-container {
             display: inline-block;
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.9) 0%, rgba(243, 229, 171, 0.9) 100%);
-            color: var(--primary-dark);
-            padding: 20px 50px;
+            padding: 12px 35px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--gold-primary);
             border-radius: 50px;
-            margin-bottom: 50px;
-            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.2);
+            margin-bottom: 40px;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
             position: relative;
             overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.5);
         }
 
-        .coming-soon-box::after {
-            content: '';
-            position: absolute;
-            top: -50%; left: -50%;
-            width: 200%; height: 200%;
-            background: rgba(255, 255, 255, 0.4);
-            transform: rotate(45deg);
-            animation: shine 4s infinite;
-        }
-
-        @keyframes shine {
-            0% { transform: translateX(-100%) rotate(45deg); }
-            20% { transform: translateX(100%) rotate(45deg); }
-            100% { transform: translateX(100%) rotate(45deg); }
-        }
-
-        .coming-soon-box h3 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.2rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            margin-bottom: 5px;
-            position: relative;
-            z-index: 1;
-            letter-spacing: 1px;
-        }
-
-        .coming-soon-box p {
+        .coming-soon-text {
             font-family: 'Cairo', sans-serif;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            position: relative;
-            z-index: 1;
+            color: var(--gold-light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .typing-text {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid var(--gold-primary);
+            animation: typing 3s steps(30, end) infinite alternate, blink 0.8s step-end infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
         }
 
         /* =========================================
-           6. شبكة الخدمات (Services Grid)
+           7. كروت الخدمات (Glassmorphism & Hover)
            ========================================= */
-        .services-grid {
+        .services-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 25px;
-            margin-bottom: 50px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 40px;
         }
 
-        .service-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 30px 20px;
+        .service-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 16px;
+            padding: 20px 10px;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
         }
 
-        .service-card::before {
+        .service-box::before {
             content: '';
             position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 4px;
-            background: var(--gold);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.4s ease;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at top right, rgba(212, 175, 55, 0.15), transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
         }
 
-        .service-card:hover {
-            transform: translateY(-10px);
-            background: rgba(212, 175, 55, 0.05);
+        .service-box:hover {
+            transform: translateY(-8px);
             border-color: rgba(212, 175, 55, 0.4);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            background: rgba(255, 255, 255, 0.04);
         }
 
-        .service-card:hover::before {
-            transform: scaleX(1);
+        .service-box:hover::before {
+            opacity: 1;
         }
 
+        /* أيقونات SVG احترافية بدل الإيموجي */
         .service-icon {
-            font-size: 3rem;
-            display: block;
-            margin-bottom: 15px;
+            width: 40px;
+            height: 40px;
+            margin: 0 auto 12px auto;
+            fill: var(--gold-primary);
             transition: transform 0.4s ease;
         }
 
-        .service-card:hover .service-icon {
-            transform: scale(1.2) rotate(8deg);
+        .service-box:hover .service-icon {
+            transform: scale(1.15);
+            fill: var(--gold-light);
         }
 
-        .service-card p {
+        .service-name {
             font-family: 'Cairo', sans-serif;
-            font-size: 1.1rem;
+            font-size: 0.95rem;
             font-weight: 700;
-            color: var(--text-light);
-            letter-spacing: 0.5px;
+            color: var(--text-main);
         }
 
         /* =========================================
-           7. معلومات التواصل (Contact Info)
+           8. التواصل والزرار
            ========================================= */
-        .contact-section {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 40px;
-            margin-bottom: 20px;
+        .contact-area {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 30px;
         }
 
-        .contact-section > p {
+        .delivery-text {
             font-family: 'Cairo', sans-serif;
-            font-size: 1.1rem;
+            font-size: 0.95rem;
             color: var(--text-muted);
-            margin-bottom: 30px;
-            line-height: 1.8;
+            margin-bottom: 20px;
         }
 
         .whatsapp-btn {
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            gap: 15px;
-            background: var(--whatsapp);
+            gap: 12px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
             color: #fff;
             text-decoration: none;
-            padding: 16px 40px;
+            padding: 14px 35px;
             border-radius: 50px;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 700;
-            font-family: 'Montserrat', 'Cairo', sans-serif;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
-            border: 2px solid transparent;
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .whatsapp-btn::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: skewX(-20deg);
+            transition: 0.5s;
         }
 
         .whatsapp-btn:hover {
-            background: #1ebe5b;
-            transform: translateY(-5px) scale(1.03);
-            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.5);
-            border-color: rgba(255,255,255,0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4);
+        }
+
+        .whatsapp-btn:hover::after {
+            left: 150%;
         }
 
         .whatsapp-btn svg {
-            width: 28px;
-            height: 28px;
+            width: 24px;
+            height: 24px;
             fill: currentColor;
         }
 
-        .location-text {
+        .location {
+            margin-top: 20px;
             font-family: 'Cairo', sans-serif;
-            font-size: 1rem;
+            font-size: 0.9rem;
             color: var(--text-muted);
-            margin-top: 25px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
         }
 
         /* =========================================
-           8. الفوتر والتجاوب (Footer & Responsive)
+           9. التجاوب مع الشاشات (Responsive)
            ========================================= */
-        footer {
-            margin-top: 50px;
-            padding-top: 25px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            font-size: 0.85rem;
-            color: rgba(139, 152, 179, 0.6);
-            font-family: 'Montserrat', sans-serif;
-            letter-spacing: 1px;
-        }
-
         @media (max-width: 768px) {
-            .container { padding: 40px 20px; }
-            .main-title { font-size: 2.8rem; }
-            .sub-title { font-size: 1rem; margin-bottom: 30px; }
-            .coming-soon-box { padding: 15px 30px; }
-            .coming-soon-box h3 { font-size: 1.6rem; }
-            .coming-soon-box p { font-size: 1rem; }
-            .services-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
-            .service-card { padding: 20px 10px; }
-            .service-icon { font-size: 2.5rem; }
-            .whatsapp-btn { width: 100%; padding: 15px 20px; font-size: 1.1rem; }
+            .main-card { padding: 40px 20px; margin: 15px; }
+            .brand-name { font-size: 2.5rem; letter-spacing: 3px; }
+            .brand-subtitle { font-size: 0.9rem; }
+            .services-container { grid-template-columns: repeat(2, 1fr); }
+            .coming-soon-text { font-size: 1.2rem; }
+            .whatsapp-btn { width: 100%; justify-content: center; }
         }
         @media (max-width: 400px) {
-            .services-grid { grid-template-columns: 1fr; }
+            .services-container { grid-template-columns: 1fr; }
         }
     </style>
 
-    <!-- =========================================
-         Schema Markup (بيانات منظمة لمحركات البحث)
-         ========================================= -->
+    <!-- Schema Markup for Local Business -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       "name": "Twoline Building Materials Trading LLC",
-      "image": "https://twoline.shop/Images/logo-04.jpg",
+      "image": "https://twoline.shop/Images/logo-01.jpg",
       "url": "https://twoline.shop",
       "telephone": "+971509475527",
       "address": {
@@ -419,17 +417,10 @@
         "addressLocality": "Umm Al Quwain",
         "addressCountry": "AE"
       },
-      "description": "Supplier of steel, rebar, woods, plywood, hardware, and heavy equipment in UAE. Delivery everywhere inside UAE.",
+      "description": "Premium supplier for Steel, Woods, Plywood, and Hardware in UAE.",
       "openingHoursSpecification": {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday"
-        ],
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
         "opens": "08:00",
         "closes": "18:00"
       }
@@ -438,71 +429,100 @@
 </head>
 <body>
 
-    <!-- تأثيرات الخلفية -->
-    <div class="bg-glow"></div>
+    <!-- الإضاءة الخلفية -->
+    <div class="ambient-light"></div>
+    
+    <!-- الجزيئات المتحركة (سيتم توليدها بالـ JS) -->
+    <div class="particles" id="particles"></div>
 
-    <!-- الحاوية الرئيسية -->
-    <main class="container">
-        <div class="content">
+    <main class="main-card">
+        
+        <!-- اللوجو -->
+        <div class="logo-wrapper fade-up delay-1">
+            <img src="Images/logo-01.jpg" alt="Twoline Logo" class="logo" loading="eager">
+        </div>
+
+        <!-- العناوين -->
+        <h1 class="brand-name fade-up delay-2">TWOLINE</h1>
+        <h2 class="brand-subtitle fade-up delay-2">Building Materials Trading L.L.C</h2>
+
+        <!-- قسم قريباً -->
+        <div class="coming-soon-container fade-up delay-3">
+            <div class="coming-soon-text">
+                <span class="typing-text">Opening Soon | انتظرونا قريباً</span>
+            </div>
+        </div>
+
+        <!-- الخدمات (أيقونات SVG خفيفة) -->
+        <div class="services-container fade-up delay-4">
+            <!-- الخدمة 1 -->
+            <div class="service-box">
+                <svg class="service-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 19h16v2H4zM4 15h16v2H4zM4 11h16v2H4zM4 7h16v2H4zM4 3h16v2H4z"/>
+                </svg>
+                <p class="service-name">Steel & Rebar</p>
+            </div>
+            <!-- الخدمة 2 -->
+            <div class="service-box">
+                <svg class="service-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 16H7v-2h10v2zm0-4H7v-2h10v2zm0-4H7V9h10v2zm0-4H7V5h10v2z"/>
+                </svg>
+                <p class="service-name">Woods & Plywood</p>
+            </div>
+            <!-- الخدمة 3 -->
+            <div class="service-box">
+                <svg class="service-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/>
+                </svg>
+                <p class="service-name">Hardware & Wire</p>
+            </div>
+            <!-- الخدمة 4 -->
+            <div class="service-box">
+                <svg class="service-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+                </svg>
+                <p class="service-name">Heavy Equipment</p>
+            </div>
+        </div>
+
+        <!-- التواصل -->
+        <div class="contact-area fade-up delay-4">
+            <p class="delivery-text">Delivery everywhere inside UAE (Dubai - Sharjah - Ajman - Umm Al Quwain - RAK)</p>
             
-            <!-- اللوجو -->
-            <div class="logo-box">
-                <img src="Images/logo-04.jpg" alt="Twoline Building Materials Logo" class="logo" loading="eager">
-            </div>
+            <a href="https://wa.me/971509475527" class="whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="Contact via WhatsApp">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                </svg>
+                WhatsApp: 050 947 5527
+            </a>
 
-            <!-- العناوين -->
-            <h1 class="main-title">TWOLINE</h1>
-            <h2 class="sub-title">Building Materials Trading L.L.C</h2>
-
-            <!-- قسم قريباً -->
-            <div class="coming-soon-box">
-                <h3>Opening Soon</h3>
-                <p>انتظرونا قريباً - متجرنا الإلكتروني في الطريق</p>
-            </div>
-
-            <!-- الخدمات -->
-            <div class="services-grid">
-                <div class="service-card">
-                    <span class="service-icon">🏗️</span>
-                    <p>Steel & Rebar</p>
-                </div>
-                <div class="service-card">
-                    <span class="service-icon">🪵</span>
-                    <p>Woods & Plywood</p>
-                </div>
-                <div class="service-card">
-                    <span class="service-icon">🔩</span>
-                    <p>Hardware & Wire</p>
-                </div>
-                <div class="service-card">
-                    <span class="service-icon">🚜</span>
-                    <p>Heavy Equipment</p>
-                </div>
-            </div>
-
-            <!-- التواصل -->
-            <div class="contact-section">
-                <p>Can delivery everywhere inside UAE (Dubai - Sharjah - Ajman - Umm Al Quwain - Ras Al Khaimah)</p>
-                
-                <!-- زرار الواتساب -->
-                <a href="https://wa.me/971509475527" class="whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="Contact us on WhatsApp">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-                    </svg>
-                    WhatsApp: 050 947 5527
-                </a>
-
-                <div class="location-text">
-                    <span>📍</span> Warehouse: Umm Deraa New Industrial, Umm Al Quwain
-                </div>
-            </div>
-
-            <!-- الفوتر -->
-            <footer>
-                &copy; 2024 Twoline Building Materials Trading LLC. All rights reserved.
-            </footer>
+            <p class="location">📍 Warehouse: Umm Deraa New Industrial, Umm Al Quwain</p>
         </div>
     </main>
 
+    <!-- سكريبت خفيف جداً لتوليد الجزيئات المتحركة -->
+    <script>
+        const particlesContainer = document.getElementById('particles');
+        const particleCount = 30; // عدد الجزيئات (خفيف جداً على المتصفح)
+
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            
+            // أحجام وأماكن وسرعات عشوائية
+            const size = Math.random() * 4 + 1;
+            const left = Math.random() * 100;
+            const duration = Math.random() * 10 + 10; // من 10 لـ 20 ثانية
+            const delay = Math.random() * 10;
+
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.left = `${left}%`;
+            particle.style.animationDuration = `${duration}s`;
+            particle.style.animationDelay = `${delay}s`;
+
+            particlesContainer.appendChild(particle);
+        }
+    </script>
 </body>
 </html>
